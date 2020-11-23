@@ -1,0 +1,7 @@
+{
+  "name": "android-gps-lab01",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
