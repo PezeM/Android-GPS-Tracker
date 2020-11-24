@@ -12,7 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { mapOutline, navigateCircleOutline, cloudUploadOutline } from 'ionicons/icons';
 import Gps from './pages/Gps';
-import Tab3 from './pages/Tab3';
+import SaveCoords from './pages/SaveCoords';
 import Map from './pages/Map';
 
 /* Core CSS required for Ionic components to work properly */
@@ -44,7 +44,7 @@ const App: React.FC = () => (
         <IonRouterOutlet>
           <Route path="/gps" component={Gps} exact={true} />
           <Route path="/map" component={Map} exact={true} />
-          <Route path="/tab3" component={Tab3} />
+          <Route path="/saveCoords" component={SaveCoords} />
           <Route path="/" render={() => <Redirect to="/gps" />} exact={true} />
         </IonRouterOutlet>
         <IonTabBar slot="bottom">
@@ -56,7 +56,7 @@ const App: React.FC = () => (
             <IonIcon icon={mapOutline} />
             <IonLabel>Mapa</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab3" href="/tab3">
+          <IonTabButton tab="saveCoords" href="/saveCoords">
             <IonIcon icon={cloudUploadOutline} />
             <IonLabel>Wyślij dane</IonLabel>
           </IonTabButton>

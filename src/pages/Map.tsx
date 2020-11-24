@@ -1,9 +1,8 @@
 import React, {useRef, useState} from 'react';
 import {
-    IonCol,
-    IonContent, IonGrid,
+    IonContent,
     IonHeader,
-    IonPage, IonRow, IonText,
+    IonPage,
     IonTitle,
     IonToolbar, useIonViewDidEnter, useIonViewWillLeave
 } from '@ionic/react';
@@ -11,6 +10,7 @@ import {useSelector} from "react-redux";
 import {selectSavedCoordinates} from "../reducers/gpsSlice";
 import mapboxgl from "mapbox-gl";
 import './Map.css';
+import {MapNoCoordsSaved} from "../components/MapNoCoordsSaved";
 
 const Map: React.FC = () => {
     const [map, setMap] = useState<mapboxgl.Map>();
@@ -83,15 +83,7 @@ const Map: React.FC = () => {
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {!coordinatesSaved ? <IonGrid style={{"height": "100%"}}>
-                    <IonRow style={{"height": "100%"}} className="ion-align-items-center">
-                        <IonCol>
-                            <IonText className="ion-text-center" color="danger">
-                                <h3>Brak zapisanych punktów</h3>
-                            </IonText>
-                        </IonCol>
-                    </IonRow>
-                </IonGrid> : <div className="map-container" ref={mapContainerRef}/>}
+                {!coordinatesSaved ? <MapNoCoordsSaved/> : <div className="map-container" ref={mapContainerRef}/>}
             </IonContent>
         </IonPage>
     );
