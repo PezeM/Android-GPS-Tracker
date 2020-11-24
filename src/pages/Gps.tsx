@@ -77,12 +77,10 @@ const Gps: React.FC = () => {
     }
 
     function restartGettingLocation() {
-        console.log(coordinatesSaved);
         dispatch(clearGpsCoordinates({}));
     }
 
     function stopGettingLocation() {
-        restartGettingLocation();
         dispatch(setTrackingState(false));
 
         if (geolocationInterval) {
