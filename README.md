@@ -4,7 +4,7 @@
 
 0) Install Ionic if needed: `npm install -g @ionic/cli`.
 1) Clone this repository.
-2) In a terminal, change directory into the repo: `cd photo-gallery-capacitor-react`.
+2) In a terminal, change directory into the repo: `cd Android-GPS-Tracker`.
 3) Install all packages: `npm install`.
 4) Rename `src/config.ts.dist` to `src/config.ts` and adjust config file. 
 5) Run on the web: `ionic serve`.

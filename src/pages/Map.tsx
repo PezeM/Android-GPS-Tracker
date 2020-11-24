@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {
-    IonContent,
+    IonCol,
+    IonContent, IonGrid,
     IonHeader,
-    IonPage,
+    IonPage, IonRow, IonText,
     IonTitle,
     IonToolbar, useIonViewDidEnter, useIonViewWillLeave
 } from '@ionic/react';
@@ -78,11 +79,19 @@ const Map: React.FC = () => {
         <IonPage>
             <IonHeader>
                 <IonToolbar>
-                    <IonTitle>Photo Gallery</IonTitle>
+                    <IonTitle>Mapa</IonTitle>
                 </IonToolbar>
             </IonHeader>
             <IonContent>
-                {!coordinatesSaved ? 'Nie ma kordynatow' : <div className="map-container" ref={mapContainerRef}/>}
+                {!coordinatesSaved ? <IonGrid style={{"height": "100%"}}>
+                    <IonRow style={{"height": "100%"}} className="ion-align-items-center">
+                        <IonCol>
+                            <IonText className="ion-text-center" color="danger">
+                                <h3>Brak zapisanych punktów</h3>
+                            </IonText>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid> : <div className="map-container" ref={mapContainerRef}/>}
             </IonContent>
         </IonPage>
     );

@@ -32,6 +32,13 @@ const gpsSlice = createSlice({
                 state.trackingStarted = true;
             }
 
+            const last = state.savedCoordinates[state.savedCoordinates.length - 1];
+            if (last &&
+                last.lat === action.payload.lat &&
+                last.lng === action.payload.lng) {
+                return;
+            }
+
             state.savedCoordinates.push(action.payload);
         }
     }
