@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@capacitor/cli": "^2.0.1",
+    "@types/mapbox-gl": "^1.12.8",
     "react-scripts": "3.4.1"
   },
   "description": ""

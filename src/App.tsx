@@ -12,9 +12,8 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { mapOutline, navigateCircleOutline, cloudUploadOutline } from 'ionicons/icons';
 import Gps from './pages/Gps';
-import Tab2 from './pages/Tab2';
 import Tab3 from './pages/Tab3';
-import Details from './pages/Details';
+import Map from './pages/Map';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -44,8 +43,7 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route path="/gps" component={Gps} exact={true} />
-          <Route path="/tab2" component={Tab2} exact={true} />
-          <Route path="/tab2/details" component={Details} />
+          <Route path="/map" component={Map} exact={true} />
           <Route path="/tab3" component={Tab3} />
           <Route path="/" render={() => <Redirect to="/gps" />} exact={true} />
         </IonRouterOutlet>
@@ -54,7 +52,7 @@ const App: React.FC = () => (
             <IonIcon icon={navigateCircleOutline} />
             <IonLabel>GPS</IonLabel>
           </IonTabButton>
-          <IonTabButton tab="tab2" href="/tab2">
+          <IonTabButton tab="map" href="/map">
             <IonIcon icon={mapOutline} />
             <IonLabel>Mapa</IonLabel>
           </IonTabButton>

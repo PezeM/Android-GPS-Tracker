@@ -11,7 +11,6 @@ import {
     IonTitle, IonToast,
     IonToolbar, useIonViewDidEnter, useIonViewWillLeave
 } from '@ionic/react';
-import './Gps.css';
 import {locateOutline, stopCircleOutline, reloadOutline} from "ionicons/icons";
 import {useDispatch, useSelector} from "react-redux";
 import {

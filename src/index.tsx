@@ -5,6 +5,10 @@ import * as serviceWorker from './serviceWorker';
 import {defineCustomElements} from '@ionic/pwa-elements/loader';
 import {store} from "./store";
 import {Provider} from 'react-redux';
+import mapboxgl from 'mapbox-gl';
+import {Config} from "./config";
+
+mapboxgl.accessToken = Config.MAPBOX_ACCESS_TOKEN;
 
 defineCustomElements(window);
 
