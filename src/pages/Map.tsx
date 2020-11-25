@@ -23,6 +23,7 @@ const Map: React.FC = () => {
             const firstCoord = coordinatesSaved[0];
 
             const mapboxMap = new mapboxgl.Map({
+                // @ts-ignore
                 container: mapContainerRef.current,
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [firstCoord.lng, firstCoord.lat],
