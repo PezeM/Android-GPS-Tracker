@@ -9,10 +9,11 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 </head>
 <body>
-<div id="button">
-    Wczytaj koordynaty<br><br>
-    <input type='file' data-buttonText="Your label here." onchange='onChooseFile(event, onFileLoad.bind(this, "contents"))'  />
+<div id="upload_file">
+    <h1>Wczytaj koordynaty</h1><br><br>
+    <input type='file' class="my_input"  onchange='onChooseFile(event, onFileLoad.bind(this, "contents"))'  />
 </div>
+
 <div id="map"></div>
 <script>
 // TO MAKE THE MAP APPEAR YOU MUST
@@ -24,7 +25,7 @@
 function onFileLoad(elementId, event) {
     var data = JSON.parse(event.target.result);
     draw_map(data);
-    document.getElementById("button").style.display = "none";
+    document.getElementById("upload_file").style.display = "none";
 }
 
 function onChooseFile(event, onLoadFileHandler) {
