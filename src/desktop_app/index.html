@@ -10,22 +10,31 @@
 </head>
 <body>
 <div id="upload_file">
+    <form>
     <h1>Wczytaj koordynaty</h1><br><br>
-    <input type='file' class="my_input"  onchange='onChooseFile(event, onFileLoad.bind(this, "contents"))'  />
+    <input type="file" class="my_input" name="file1"  onchange='onChooseFile(event, onFileLoad.bind(this, "contents"))'   />
+    </form>
 </div>
 
 <div id="map"></div>
 <script>
-// TO MAKE THE MAP APPEAR YOU MUST
+    // TO MAKE THE MAP APPEAR YOU MUST
 	// ADD YOUR ACCESS TOKEN FROM
 	// https://account.mapbox.com
 	mapboxgl.accessToken = 'pk.eyJ1IjoicGV6ZW0iLCJhIjoiY2tod2N6YTk5MDdsMDJ1bmI5OHhnZjlzdCJ9.J3Fko5-F0oTkwSTO6yWYqg';
 
 
 function onFileLoad(elementId, event) {
+    try {
+        JSON.parse(event.target.result);
+    } catch (e) {
+        alert("Prosze wybrać plik z rozszerzeniem .json");
+        return false;
+    }
     var data = JSON.parse(event.target.result);
     draw_map(data);
     document.getElementById("upload_file").style.display = "none";
+    return true;
 }
 
 function onChooseFile(event, onLoadFileHandler) {
@@ -45,44 +54,43 @@ function onChooseFile(event, onLoadFileHandler) {
 }
 
 function draw_map(coords){
-const firstCoord = coords[0];
-var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center:  [firstCoord.lng, firstCoord.lat],
-zoom: 15
+    const firstCoord = coords[0];
+    var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center:  [firstCoord.lng, firstCoord.lat],
+    zoom: 15
 });
 
 map.on('load', function () {
-const coordinates = coords.map(coord => [coord.lng, coord.lat]);
-map.addSource('route', {
-'type': 'geojson',
-'data': {
-'type': 'Feature',
-'properties': {},
-'geometry': {
-'type': 'LineString',
- 'coordinates': coordinates
-
+    const coordinates = coords.map(coord => [coord.lng, coord.lat]);
+    map.addSource('route', {
+    'type': 'geojson',
+    'data': {
+    'type': 'Feature',
+    'properties': {},
+    'geometry': {
+    'type': 'LineString',
+    'coordinates': coordinates
 }
 }
 });
 map.addLayer({
-'id': 'route',
-'type': 'line',
-'source': 'route',
-'layout': {
-'line-join': 'round',
-'line-cap': 'round'
+    'id': 'route',
+    'type': 'line',
+    'source': 'route',
+    'layout': {
+    'line-join': 'round',
+    'line-cap': 'round'
 },
 'paint': {
-'line-color': '#888',
-'line-width': 8
+    'line-color': '#888',
+    'line-width': 8
 }
 });
 });
 }
-</script>
 
+</script>
 </body>
 </html>
