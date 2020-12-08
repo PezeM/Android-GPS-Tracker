@@ -7,13 +7,18 @@ import {
     IonHeader,
     IonIcon,
     IonPage,
-    IonRow,  IonItem, IonLabel, IonList, IonText, IonAvatar, IonThumbnail, IonDatetime, IonSelect, IonSelectOption, IonToggle, IonInput, IonCheckbox, IonRange,IonListHeader,
-    IonTitle, IonToast,
-    IonToolbar, useIonViewDidEnter, useIonViewWillLeave
+    IonRow,
+    IonItem,
+    IonLabel,
+    IonList,
+    IonText,
+    IonTitle,
+    IonToast,
+    IonToolbar,
+    useIonViewDidEnter,
+    useIonViewWillLeave
 } from '@ionic/react';
 import {locateOutline, stopCircleOutline, reloadOutline, locationOutline} from "ionicons/icons";
-import { closeCircle, home, star, navigate, informationCircle, checkmarkCircle, shuffle } from 'ionicons/icons';
-import {render} from '@testing-library/react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     addGpsCoordinate,
@@ -98,15 +103,15 @@ const Gps: React.FC = () => {
                     <IonRow>Naciśnij start aby rozpocząć!</IonRow>
                 </div>
             );
-        } else
-            {
-
-            const listItems = coordinatesSaved.map((coordinate) =>
-                <IonItem >Szerokość: {coordinate.lat.toFixed(1)}°, Długość: {coordinate.lng.toFixed(1)}° <IonIcon icon={locationOutline} slot="end" /> </IonItem >
+        } else {
+            const listItems = coordinatesSaved.map((coordinate, index) =>
+                <IonItem key={index}>Szerokość: {coordinate.lat.toFixed(1)}°, Długość: {coordinate.lng.toFixed(1)}°
+                    <IonIcon icon={locationOutline} slot="end"/>
+                </IonItem>
             );
 
             return (
-                        <IonList>{listItems}</IonList>
+                <IonList>{listItems}</IonList>
             );
         }
     }
@@ -153,17 +158,17 @@ const Gps: React.FC = () => {
                     </IonRow>
                     <IonList>
                         <IonItem lines="none" color="warning">
-                           <b> <IonLabel>Lista koordynatów:</IonLabel></b>
+                            <b> <IonLabel>Lista koordynatów:</IonLabel></b>
                         </IonItem>
                         <IonItem lines="none">
-                                <IonLabel>
-                                    <IonText >
-                                        {
-                                            showCoordinates()
-                                        }
-                                    </IonText>
-                                </IonLabel>
-                            </IonItem>
+                            <IonLabel>
+                                <IonText>
+                                    {
+                                        showCoordinates()
+                                    }
+                                </IonText>
+                            </IonLabel>
+                        </IonItem>
                     </IonList>
                 </IonGrid>
             </IonContent>
