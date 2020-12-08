@@ -7,11 +7,13 @@ import {
     IonHeader,
     IonIcon,
     IonPage,
-    IonRow,
+    IonRow,  IonItem, IonLabel, IonList, IonText, IonAvatar, IonThumbnail, IonDatetime, IonSelect, IonSelectOption, IonToggle, IonInput, IonCheckbox, IonRange,IonListHeader,
     IonTitle, IonToast,
     IonToolbar, useIonViewDidEnter, useIonViewWillLeave
 } from '@ionic/react';
-import {locateOutline, stopCircleOutline, reloadOutline} from "ionicons/icons";
+import {locateOutline, stopCircleOutline, reloadOutline, locationOutline} from "ionicons/icons";
+import { closeCircle, home, star, navigate, informationCircle, checkmarkCircle, shuffle } from 'ionicons/icons';
+import {render} from '@testing-library/react';
 import {useDispatch, useSelector} from "react-redux";
 import {
     addGpsCoordinate,
@@ -89,6 +91,27 @@ const Gps: React.FC = () => {
         }
     }
 
+    function showCoordinates() {
+        if (!coordinatesSaved) {
+            return (
+                <div>
+                    <IonRow>Naciśnij start aby rozpocząć!</IonRow>
+                </div>
+            );
+        } else
+            {
+
+            const listItems = coordinatesSaved.map((coordinate) =>
+                <IonItem >Szerokość: {coordinate.lat.toFixed(1)}°, Długość: {coordinate.lng.toFixed(1)}° <IonIcon icon={locationOutline} slot="end" /> </IonItem >
+            );
+
+            return (
+                        <IonList>{listItems}</IonList>
+            );
+        }
+    }
+
+
     return (
         <IonPage>
             <IonToast
@@ -128,9 +151,20 @@ const Gps: React.FC = () => {
                             </IonButton>
                         </IonCol>
                     </IonRow>
-                    <IonRow className="ion-padding-top">
-                        Lista koordynatów
-                    </IonRow>
+                    <IonList>
+                        <IonItem lines="none" color="warning">
+                           <b> <IonLabel>Lista koordynatów:</IonLabel></b>
+                        </IonItem>
+                        <IonItem lines="none">
+                                <IonLabel>
+                                    <IonText >
+                                        {
+                                            showCoordinates()
+                                        }
+                                    </IonText>
+                                </IonLabel>
+                            </IonItem>
+                    </IonList>
                 </IonGrid>
             </IonContent>
         </IonPage>

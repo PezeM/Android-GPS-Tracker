@@ -14,7 +14,6 @@ import { mapOutline, navigateCircleOutline, cloudUploadOutline } from 'ionicons/
 import Gps from './pages/Gps';
 import SaveCoords from './pages/SaveCoords';
 import Map from './pages/Map';
-
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
 
