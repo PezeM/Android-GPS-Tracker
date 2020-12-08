@@ -1,0 +1,73 @@
+body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+#map {
+  position: absolute;
+  top: 0;
+  left :0;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  }
+
+h1 {
+  color: #ffffff;
+  font-family: 'Lato',
+  sans-serif;
+  font-size: 54px;
+  font-weight: 300;
+  line-height: 58px;
+  margin: 0 0 58px; }
+
+#upload_file {
+  margin: 0;
+  position: absolute;
+  z-index: 3;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.my_input::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+.my_input{
+  border-radius: 25px;
+  border: 3px solid #ffffff;
+  margin-left: 20%;
+}
+
+.my_input::before {
+  content: 'Wybierz plik';
+  margin-left: 18%;
+  color: #ffffff;
+  display: inline-block;
+  padding: 5px 8px;
+  outline: none;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  cursor: pointer;
+  font-size: 20pt;
+}
+
+.my_input:hover::before {
+  border-color: green;
+}
+
